@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('library_app.urls')),  # To include book API routes
+    path('api/accounts/', include('accounts.urls')),  # Add authentication routes
 ]
