@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book
+from .models import Book, Checkout
 from django.contrib.auth.models import User
 
 
@@ -18,3 +18,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'date_joined', 'is_active'] # to expose user details
+
+class CheckoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Checkout
+        fields = ['id', 'user', 'book', 'checkout_date', 'return_date']
+        read_only_fields = ['checkout_date', 'return_date']
