@@ -16,9 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+from rest_framework.authtoken.views import obtain_auth_token  # Import token view
+
+
+def home(request):
+    return HttpResponse("Welcome to the Library Management System API")
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
-    path('api/library_app', include('library_app.urls')),  # To include book API routes
+    path('api/books/', include('library_app.urls')),  # To include book API routes
     path('api/accounts/', include('accounts.urls')),  # Add authentication routes
+    path('api-auth/', include('rest_framework.urls')),  # For REST framework authentication
+    path('api/token/', obtain_auth_token, name='api-token'),  # Token authentication
 ]
