@@ -14,6 +14,17 @@ class Book(models.Model):
 class LibraryUser(AbstractUser):
     date_of_membership = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    groups = models.ManyToManyField(
+        "auth.Group",
+        related_name="library_users",  
+        blank=True,
+    )
+    user_permissions = models.ManyToManyField(
+        "auth.Permission",
+        related_name="library_users_permissions",  
+        blank=True,
+    )
     
     def __str__(self):
         return self.username
