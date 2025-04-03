@@ -23,6 +23,12 @@ class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     search_fields = ['title', 'author', 'isbn']  # to search for fields using query parameters
+    permission_classes = [IsAuthenticated] 
+    
+    def get(self, request):
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
 
 class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()

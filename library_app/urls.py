@@ -3,6 +3,7 @@ from .views import BookListCreateView, BookDetailView, BookListView, UserListVie
 
 urlpatterns = [
     path('books/', BookListCreateView.as_view(), name='book-list-create'), #For creating books
+    path('api/books/', BookListView.as_view(), name='book-list'),
     path('books/<int:pk>/', BookDetailView.as_view(), name='book-detail'), # allows updating and deleting books by ID.
     path('books/all/', BookListView.as_view(), name='book-list'),  # For retrieving books
     path('users/', UserListView.as_view(), name='user-list'),
