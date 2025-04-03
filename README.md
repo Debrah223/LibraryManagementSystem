@@ -13,7 +13,7 @@ I created views for CRUD operations in the library_app views.py. The main views 
 Step 6: 
 I created a url pattern in the library_app/ urls.py
 Endpoints:
-GET /libary_app/ → List all books
+GET /api/books/ → List all books
 POST /library_app/ → Add a new book
 GET /libary_app/<id>/ → Get book details
 PUT /libary_app/<id>/ → Update a book

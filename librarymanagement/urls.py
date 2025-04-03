@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.http import HttpResponse
 from rest_framework.authtoken.views import obtain_auth_token  # Import token view
 from library_app.views import BookListView 
-
+from accounts.urls import RegisterView, LoginView
 
 def home(request):
     return HttpResponse("Welcome to the Library Management System API")
@@ -27,8 +27,10 @@ def home(request):
 urlpatterns = [
     path('', home, name='home'),
     path('admin/', admin.site.urls),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
     path('api/books/', include('library_app.urls')),  # To include book API routes
-    path('api/books/', BookListView.as_view(), name='book-list'),
+    path('api/books/', BookListView.as_view(), name='book-list'), #To lost all books
     path('api/accounts/', include('accounts.urls')),  # Add authentication routes
     path('api-auth/', include('rest_framework.urls')),  # For REST framework authentication
     path('api/token/', obtain_auth_token, name='api-token'),  # Token authentication
