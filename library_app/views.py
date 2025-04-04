@@ -77,6 +77,9 @@ class ReturnBookView(generics.UpdateAPIView):
     serializer_class = CheckoutSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return Checkout.objects.filter(user=self.request.user, return_date__isnull=True)
+
     def patch(self, request, *args, **kwargs):
         checkout_id = kwargs.get("pk")
 
@@ -93,9 +96,10 @@ class ReturnBookView(generics.UpdateAPIView):
 
         except Checkout.DoesNotExist:
             return Response({"error": "No active checkout record found"}, status=status.HTTP_404_NOT_FOUND)
+
         
 class AvailableBooksView(generics.ListAPIView):
-    queryset = Book.objects.filter(available_copies__gt=0)
+    queryset = Book.objects.filter(copies_available__gt=0)
     serializer_class = BookSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['title', 'author', 'isbn']
