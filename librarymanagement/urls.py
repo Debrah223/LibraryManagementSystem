@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
 from rest_framework.authtoken.views import obtain_auth_token  # Import token view
-from library_app.views import BookListView, CheckoutBookView
+from library_app.views import BookListView, CheckoutBookView, ReturnBookView
 from accounts.urls import RegisterView, LoginView
 
 def home(request):
@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/books/', include('library_app.urls')),  # To include book API routes
     path('api/books/', BookListView.as_view(), name='book-list'), #To list all books
     path('checkout/', CheckoutBookView.as_view(), name='checkout-book'),
+    path('return/<int:pk>/', ReturnBookView.as_view(), name='return-book'),
     path('api/accounts/', include('accounts.urls')),  # Add authentication routes
     path('api-auth/', include('rest_framework.urls')),  # For REST framework authentication
     path('api/token/', obtain_auth_token, name='api-token'),  # Token authentication

@@ -49,8 +49,13 @@ class CheckoutBookView(generics.CreateAPIView):
         book_id = request.data.get("book")
         user = request.user
 
+        # we validate if book id was provided
+        if not book_id:
+            return Response({"error": "Book ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+
         try:
             book = Book.objects.get(id=book_id)
+            # checking book availability
             if book.copies_available < 1:
                 return Response({"error": "No copies available"}, status=status.HTTP_400_BAD_REQUEST)
             
