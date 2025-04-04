@@ -36,6 +36,9 @@ Step 12:
 Step 13:
 I created a urls pattern in accounts/urls.py and also added it in the main project url(librarymanagement/urls)
 
+Main endpoints
+
+
 
 
 

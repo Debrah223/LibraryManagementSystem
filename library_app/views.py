@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics, status
+from rest_framework import generics, status, filters
 from .models import Book, Checkout
 from .serializers import BookSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -7,6 +7,7 @@ from .serializers import UserSerializer, CheckoutSerializer
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from django.utils import timezone
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class BookListCreateView(generics.ListCreateAPIView):
@@ -24,7 +25,7 @@ class BookListView(generics.ListAPIView):
     serializer_class = BookSerializer
     search_fields = ['title', 'author', 'isbn']  # to search for fields using query parameters
     permission_classes = [IsAuthenticated] 
-    
+
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True)
@@ -87,3 +88,10 @@ class ReturnBookView(generics.UpdateAPIView):
 
         except Checkout.DoesNotExist:
             return Response({"error": "No active checkout record found"}, status=status.HTTP_404_NOT_FOUND)
+        
+class AvailableBooksView(generics.ListAPIView):
+    queryset = Book.objects.filter(available_copies__gt=0)
+    serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['title', 'author', 'isbn']
+    search_fields = ['title', 'author', 'isbn']
