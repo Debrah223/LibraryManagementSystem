@@ -36,8 +36,15 @@
     POST http://127.0.0.1:8000/api/checkout/
 
     Only one copy of a book can be checked out per user at a time.
+    {
+    "book": 2
+    }
     When a book is checked out, reduce the number of available copies.
+
     Ensure that users can only check out books if there are available copies.
+    {
+    "error": "You have already checked out this book"
+    }
     Create an endpoint to allow users to return checked-out books.
     PUT http://127.0.0.1:8000/api/return/2/
     Once a book is returned, increase the number of available copies.
