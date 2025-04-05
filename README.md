@@ -4,7 +4,19 @@
     I Implemented the ability to Create, Read, Update, and Delete (CRUD) books.
    POST/ GET/ PUT/ DELETE/ http://127.0.0.1:8000/api/books/
 
-    Each book has the following attributes: Title, Author, ISBN, Published Date, Number of Copies Available.
+    Each book has the following attributes: Title, Author, ISBN, Published Date, Number of available copies 
+    {
+    "title":  "The universe",
+
+    "author": "Water brook",
+
+    "isbn": "912098-654945",
+
+    "published_date": "1928-07-28",
+    
+    "available copies": 11
+    
+}
     I ensured validations such as a unique ISBN number for each book.
 2. Users Management (CRUD):
 
