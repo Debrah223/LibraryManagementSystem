@@ -51,7 +51,7 @@
         "available_copies": 1
     },
     Implemented query filters to search by Title, Author, or ISBN.
-    GET http://127.0.0.1:8000/api/books/available/?title=The universe
+    GET http://127.0.0.1:8000/api/books/available/?title= The universe
 
 
 
