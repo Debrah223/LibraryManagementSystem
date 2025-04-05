@@ -2,7 +2,7 @@
 1. Books Management (CRUD):
 
     I Implemented the ability to Create, Read, Update, and Delete (CRUD) books.
-    
+   POST/ GET/ PUT/ DELETE/ http://127.0.0.1:8000/api/books/
 
     Each book has the following attributes: Title, Author, ISBN, Published Date, Number of Copies Available.
     I ensured validations such as a unique ISBN number for each book.
