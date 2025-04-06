@@ -32,7 +32,7 @@
     }
 3. Check-Out and Return Books:
 
-    I Create an endpoint to allow users to check out available books.
+    I Created an endpoint to allow users to check out available books.
     POST http://127.0.0.1:8000/api/checkout/
 
     Only one copy of a book can be checked out per user at a time.
@@ -45,7 +45,7 @@
     {
     "error": "You have already checked out this book"
     }
-    Create an endpoint to allow users to return checked-out books.
+    Created an endpoint to allow users to return checked-out books.
     PUT http://127.0.0.1:8000/api/return/2/
     Once a book is returned, increase the number of available copies.
     Log the date when the user checked out and returned each book.
@@ -58,7 +58,7 @@
     }
 4. View Available Books:
 
-    Create an endpoint to view all books and filter by availability (i.e., only show books with available copies).
+    Created an endpoint to view all books and filter by availability (i.e., only show books with available copies).
     
     GET http://127.0.0.1:8000/api/books/available/
      {
