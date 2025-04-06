@@ -3,7 +3,8 @@
 
     I Implemented the ability to Create, Read, Update, and Delete (CRUD) books.
    POST/ GET/ PUT/ DELETE/ http://127.0.0.1:8000/api/books/
-Creating a book POST http://127.0.0.1:8000/api/books/
+Creating a book 
+POST http://127.0.0.1:8000/api/books/
     Each book has the following attributes: Title, Author, ISBN, Published Date, Number of available copies 
     Body
     {
@@ -19,7 +20,16 @@ Creating a book POST http://127.0.0.1:8000/api/books/
     
     }
     I ensured validations such as a unique ISBN number for each book.
-To delete a book endpoint
+Get all books GET http://127.0.0.1:8000/api/books
+
+Update a book with a token
+PATCH http://127.0.0.1:8000/api/books/4/
+Body 
+{
+  "title": "New Book Title",
+  "author": "Updated Author"
+}
+To delete a book endpoint with a token
 DELETE http://127.0.0.1:8000/api/books/3/
 
 2. Users Management (CRUD):
@@ -38,23 +48,19 @@ Register user
      I ensured a user should have a unique Username, Email, Date of Membership, and Active Status.
 Get all users
     GET http://127.0.0.1:8000/api/users/
-    {
-        "id": 10,
-        "username": "kell",
-        "email": "kell@gmail.com",
-        "date_joined": "2025-04-04T08:51:25.012918Z",
-        "is_active": true
-    }
+
 To update user details
 PATCH http://127.0.0.1:8000/api/users/9/
+With a valid token
 Body
 {
     "email": "email@gmail.com"
 }
 with the user token
-To delete user
+**To delete user**
 DELETE http://127.0.0.1:8000/api/accounts/3/
-A user can delete their account with autorized token
+A user can delete their account with authorized token
+
 3. Check-Out and Return Books:
 
 I Created an endpoint to allow users to check out available books.
@@ -88,7 +94,7 @@ Once a book is returned, increase the number of available copies.
     }
 4. View Available Books:
 
-    Created an endpoint to view all books and filter by availability (i.e., only show books with available copies).
+Created an endpoint to view all books and filter by availability (i.e., only show books with available copies).
     
     GET http://127.0.0.1:8000/api/books/available/
      {
