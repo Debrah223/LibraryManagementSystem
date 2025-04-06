@@ -14,9 +14,7 @@ POST http://127.0.0.1:8000/api/books/
 
     "isbn": "912098-654945",
 
-    "published_date": "1928-07-28",
-    
-    "available copies": 11
+    "published_date": "1928-07-28"
     
     }
     I ensured validations such as a unique ISBN number for each book.
@@ -36,20 +34,20 @@ DELETE http://127.0.0.1:8000/api/books/3/
 
     I Implemented CRUD operations for library users.
 Register user
-    POST http://127.0.0.1:8000/api/token/
+    POST http://127.0.0.1:8000/register/
     Body
     {
     "username": "kell",
     "email": "kell@gmail.com",
     "password": "kell1"
     }
-    Login user
+Login user
     POST http://127.0.0.1:8000/login/
      I ensured a user should have a unique Username, Email, Date of Membership, and Active Status.
 Get all users
     GET http://127.0.0.1:8000/api/users/
 
-To update user details
+Update user details
 PATCH http://127.0.0.1:8000/api/users/9/
 With a valid token
 Body
