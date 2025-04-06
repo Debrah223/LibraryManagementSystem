@@ -3,8 +3,9 @@
 
     I Implemented the ability to Create, Read, Update, and Delete (CRUD) books.
    POST/ GET/ PUT/ DELETE/ http://127.0.0.1:8000/api/books/
-
+Creating a book POST http://127.0.0.1:8000/api/books/
     Each book has the following attributes: Title, Author, ISBN, Published Date, Number of available copies 
+    Body
     {
     "title":  "The universe",
 
@@ -16,12 +17,26 @@
     
     "available copies": 11
     
-}
+    }
     I ensured validations such as a unique ISBN number for each book.
+To delete a book endpoint
+DELETE http://127.0.0.1:8000/api/books/3/
+
 2. Users Management (CRUD):
 
     I Implemented CRUD operations for library users.
-    I ensured a user should have a unique Username, Email, Date of Membership, and Active Status.
+Register user
+    POST http://127.0.0.1:8000/api/token/
+    Body
+    {
+    "username": "kell",
+    "email": "kell@gmail.com",
+    "password": "kell1"
+    }
+    Login user
+    POST http://127.0.0.1:8000/login/
+     I ensured a user should have a unique Username, Email, Date of Membership, and Active Status.
+Get all users
     GET http://127.0.0.1:8000/api/users/
     {
         "id": 10,
@@ -32,10 +47,11 @@
     }
 3. Check-Out and Return Books:
 
-    I Created an endpoint to allow users to check out available books.
+I Created an endpoint to allow users to check out available books.
     POST http://127.0.0.1:8000/api/checkout/
 
     Only one copy of a book can be checked out per user at a time.
+    Body
     {
     "book": 2
     }
@@ -45,9 +61,14 @@
     {
     "error": "You have already checked out this book"
     }
-    Created an endpoint to allow users to return checked-out books.
+Created an endpoint to allow users to return checked-out books.
     PUT http://127.0.0.1:8000/api/return/2/
-    Once a book is returned, increase the number of available copies.
+    Body
+    {
+    "book": 2,
+    "user": 10
+    }
+Once a book is returned, increase the number of available copies.
     Log the date when the user checked out and returned each book.
     {
     "id": 2,
