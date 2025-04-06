@@ -45,6 +45,13 @@ Get all users
         "date_joined": "2025-04-04T08:51:25.012918Z",
         "is_active": true
     }
+To update user details
+PATCH http://127.0.0.1:8000/api/users/9/
+Body
+{
+    "email": "email@gmail.com"
+}
+with the user token
 To delete user
 DELETE http://127.0.0.1:8000/api/accounts/3/
 A user can delete their account with autorized token
