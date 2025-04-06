@@ -45,12 +45,14 @@ Get all users
         "date_joined": "2025-04-04T08:51:25.012918Z",
         "is_active": true
     }
+To delete user
+DELETE http://127.0.0.1:8000/api/accounts/3/
+A user can delete their account with autorized token
 3. Check-Out and Return Books:
 
 I Created an endpoint to allow users to check out available books.
     POST http://127.0.0.1:8000/api/checkout/
-
-    Only one copy of a book can be checked out per user at a time.
+Only one copy of a book can be checked out per user at a time.
     Body
     {
     "book": 2
@@ -90,7 +92,7 @@ Once a book is returned, increase the number of available copies.
         "published_date": "2021-08-23",
         "available_copies": 1
     },
-    Implemented query filters to search by Title, Author, or ISBN.
+Implemented query filters to search by Title, Author, or ISBN.
     GET http://127.0.0.1:8000/api/books/available/?title= The universe
 
 
