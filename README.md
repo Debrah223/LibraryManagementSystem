@@ -1,4 +1,4 @@
-# LibraryManagementSystem
+# LibraryManagementSystemAPI
 1. Books Management (CRUD):
 
     I Implemented the ability to Create, Read, Update, and Delete (CRUD) books.
@@ -109,4 +109,10 @@ Implemented query filters to search by Title, Author, or ISBN.
     GET http://127.0.0.1:8000/api/books/available/?title= The universe
 
 
+What My Library Management System API Solves:
+>Efficient book management
+>User Management
+>Secure Access
+>Borrowing & Returning Books
+>Search & Filter
 
